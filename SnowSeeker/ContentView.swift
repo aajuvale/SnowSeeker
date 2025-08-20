@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State
+    private var favorites = Favorites()
 
     @State
     private var searchText = ""
@@ -45,6 +47,14 @@ struct ContentView: View {
                             Text("\(resort.runs) runs")
                                 .foregroundStyle(.secondary)
                         }
+
+                        if favorites.contains(resort) {
+                            Spacer()
+
+                            Image(systemName: "heart.fill")
+                                .accessibilityLabel("This is a favorite resort!")
+                                .foregroundStyle(.red)
+                        }
                     }
                 }
             }
@@ -56,6 +66,7 @@ struct ContentView: View {
         } detail: {
             WelcomeView()
         }
+        .environment(favorites)
     }
 }
 
