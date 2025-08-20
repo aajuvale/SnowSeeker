@@ -22,15 +22,15 @@ class Favorites {
 
     func add(_ resort: Resort) {
         resorts.insert(resort.id)
-        save()
+        save(resort)
     }
 
     func remove(_ resort: Resort) {
         resorts.remove(resort.id)
-        save()
+        save(resort)
     }
 
-    func save() {
+    func save(_ resort: Resort) {
         resorts.contains(resort.id)
     }
 }
